@@ -1,24 +1,24 @@
 import heapq
 
 
-def optimal_expenses(iterable):
-
+def optimal_expenses(arr):
     total_cost = 0
 
-    heapq.heapify(iterable)
-    print("Початкова купа:", iterable)
+    arr_copy = arr[:]
+    heapq.heapify(arr_copy)
+    print("Початкова купа:", arr_copy)
 
-    while len(iterable) > 1:
+    while len(arr_copy) > 1:
 
-        first = heapq.heappop(iterable)
-        second = heapq.heappop(iterable)
+        first = heapq.heappop(arr_copy)
+        second = heapq.heappop(arr_copy)
         cost = first + second
         total_cost += cost
 
-        heapq.heappush(iterable, cost)
+        heapq.heappush(arr_copy, cost)
 
         print(f"З'єднали {first} і {second}, отримали {cost}")
-        print("Оновлена купа:", iterable)
+        print("Оновлена купа:", arr_copy)
         print("Поточні загальні витрати:", total_cost)
         print("-" * 30)
 
